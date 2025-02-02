@@ -1,2 +1,23 @@
-#Background image
-background = Image('desk.png', 0, 0)
+import pygame, os
+from pygame.locals import *
+from image import StressImage as Image
+from text import Text
+
+class Scene():
+    def __init__(self, object_list):
+        self.objects = object_list
+
+    def update(self):
+        for obj in self.objects:
+            obj.update()
+
+    def checkclick(self, mousex, mousey, camera_offset_x=0):
+        for obj in self.objects:
+            obj.checkclick(mousex, mousey, camera_offset_x)
+    
+    def draw(self, DS, camera_offset_x=0):
+        for obj in self.objects:
+            obj.draw(DS, camera_offset_x)
+
+def desk():
+    return [Image('desk.png', 0, 0)]

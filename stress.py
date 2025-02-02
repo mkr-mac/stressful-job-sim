@@ -1,7 +1,7 @@
  # Example file showing a basic pygame "game loop"
-import pygame
+import pygame, sys
 from keyhandler import KeyHandler
-
+import scene
 
 def quit():
   pygame.quit()
@@ -31,11 +31,11 @@ def main():
     clock = pygame.time.Clock()
     running = True
 
-    camera_offset = (0,0)
+    camera_offset_x = 0
     
     kh = KeyHandler()
 
-
+    current_scene = scene.desk
 
     while running:
         # poll for events
@@ -48,10 +48,16 @@ def main():
 
             kh.handle_input(event)
 
+    for obj in current_scene:
+      if obj.clickable and obj.checkclick(mousex, mousey, camera_offset_x):
+        action = obj.action
+
+
         # fill the screen with a color to wipe away anything from last frame
         screen.fill("purple")
 
         # RENDER YOUR GAME HERE
+        
 
         # foreach object in the game
         #
@@ -60,6 +66,7 @@ def main():
         pygame.display.flip()
 
     clock.tick(60)  # limits FPS to 60
+    
 
 pygame.quit()
 
