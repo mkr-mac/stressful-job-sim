@@ -1,6 +1,7 @@
 import pygame, os
 from pygame.locals import *
 from image import StressImage as Image
+from button import StressButton as Button
 from text import Text
 
 class Scene():
@@ -19,5 +20,11 @@ class Scene():
         for obj in self.objects:
             obj.draw(DS, camera_offset_x)
 
+def test():
+    print("YOUI PHSHUED THE BUT TON")
+
 def desk():
-    return [Image('desk.png', 0, 0)]
+    return [
+        Image('desk.png', 0, 0),
+        Button('buttonup.png', 500, 500, True, test),
+    ]

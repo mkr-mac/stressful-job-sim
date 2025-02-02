@@ -59,9 +59,9 @@ def main():
 
         mouse_state = kh.get_mouse_state()
         for obj in current_scene:
-            if obj.clickable and obj.checkclick(mouse_state["pos"][0], mouse_state["pos"][1], camera_offset_x):
-                action = obj.action
-
+            if obj.clickable and obj.checkclick(mouse_state["pos"][0], mouse_state["pos"][1], camera_offset_x) and mouse_state["framelmb"] == True:
+                obj.action()
+                mouse_state["framelmb"] = False
             obj.draw(DS, camera_offset_x)
 
         # RENDER YOUR GAME HERE
