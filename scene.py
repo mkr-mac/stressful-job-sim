@@ -2,6 +2,7 @@ import pygame, os
 from pygame.locals import *
 from image import StressImage as Image
 from button import StressButton as Button
+from gauge import StressGauge as Gauge
 from text import Text
 
 class Scene():
@@ -31,4 +32,5 @@ def desk():
         Button('buttonup.png', 400, 500, True, test),
         Button('buttonup.png', 500, 500, True, test),
         Button('buttonup.png', 600, 500, True, test),
+        Gauge(400, 400),
     ]
