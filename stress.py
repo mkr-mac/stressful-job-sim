@@ -54,13 +54,10 @@ def main():
             kh.handle_input(event)
 
 
-<<<<<<< HEAD
         # fill the screen with a color to wipe away anything from last frame
         screen.fill("purple")
 
-=======
         mouse_state = kh.get_mouse_state()
->>>>>>> 4c94f6ba2c44406e1ec44f2e4556bc44c786f68b
         for obj in current_scene:
             if obj.clickable and obj.checkclick(mouse_state["pos"][0], mouse_state["pos"][1], camera_offset_x):
                 action = obj.action
