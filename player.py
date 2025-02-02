@@ -2,6 +2,7 @@ class Player():
     def __init__(self):
         self.stress = 0.0
         self.job_security = 0
+        self.energy = 1000
         self.difficulty = 1
 
     def update(self):
@@ -15,6 +16,7 @@ class Player():
             self.stress = 0
 
         self.difficulty += .0005
+        self.energy += -self.stress
 
 
     def increase_stress(self, active_stressors):
