@@ -5,8 +5,11 @@ class StressImage:
     def __init__(self, image, x, y, clickable = False, action = None):
         self.x = x
         self.y = y
+        self.ox = x
+        self.oy = y
         self.coords = (x,y)
         self.url = os.path.join("img", image)
+        self.original_image = pygame.image.load(os.path.join("img", image))
         self.image = pygame.image.load(os.path.join("img", image))
         self.rect = self.image.get_rect()
         self.width = self.image.get_width()
@@ -37,10 +40,10 @@ class StressImage:
         self.height = self.image.get_height()
 
     def rotate(self, deg):
-        self.image = pygame.transform.rotate(self.image, deg)
+        self.image = pygame.transform.rotate(self.original_image, deg)
         self.rect = self.image.get_rect(center=self.rect.center)
-        self.x = self.rect.topleft[0] + self.x
-        self.y = self.rect.topleft[1] + self.y
+        self.x = self.rect.topleft[0] + self.ox
+        self.y = self.rect.topleft[1] + self.oy
 
     def get_alarm_state(self):
         return False
