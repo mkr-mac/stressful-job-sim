@@ -31,7 +31,13 @@ class StressImage:
         self.height = self.image.get_height()
 
     def change_pic_from_string(self, image):
-        self.image = pygame.image.frombuffer(image, (32, 32), 'RGB')
+        self.image = pygame.image.frombuffer(original_image, (32, 32), 'RGB')
         self.rect = self.image.get_rect()
         self.width = self.image.get_width()
         self.height = self.image.get_height()
+
+    def rotate(self, deg):
+        self.image = pygame.transform.rotate(self.image, deg)
+        self.rect = self.image.get_rect(center=self.rect.center)
+        self.x = self.rect.topleft[0] + self.x
+        self.y = self.rect.topleft[1] + self.y
