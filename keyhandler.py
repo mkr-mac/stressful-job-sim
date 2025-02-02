@@ -9,6 +9,7 @@ class KeyHandler():
         }
         self.mouse_state = {
             "lmb": False,
+            "framelmb": False,
             "pos": pygame.mouse.get_pos()
         }
 
@@ -30,6 +31,10 @@ class KeyHandler():
         
         # handle mouse events
         elif event.type == pygame.MOUSEBUTTONDOWN:
+            # setting frame lmb to true for one frame for singe fire
+            if self.mouse_state["lmb"] == False:
+                self.mouse_state["framelmb"] = True
+
             self.mouse_state["lmb"] = True
         elif event.type == pygame.MOUSEBUTTONUP:
             self.mouse_state["lmb"] = False
