@@ -17,9 +17,9 @@ class Text:
         self.scrolling = scrolling
         
         if color == None:
-        self.color = (0,0,0)
+            self.color = (0,0,0)
         else:
-        self.color = color
+            self.color = color
         
         self.render = self.font.render(self.text, True, self.color)
         self.rect = self.render.get_rect()
@@ -27,8 +27,7 @@ class Text:
         self.width = self.rect.width
         
         if self.max_width == None:
-        #arbitrarily large number
-        self.max_width = self.width
+            self.max_width = self.width
         
         self.clickable = clickable
         self.action = action
@@ -37,26 +36,28 @@ class Text:
     def draw(self, DS):
         self.calls+=1
         if not self.calls%30 and self.scrolling:
-        self.c+=1
+            self.c+=1
         if self.c == self.tlen:
             self.c = 0
         i = 0
         le = self.c
         while ((i+.7)*self.size*.5)<self.max_width and self.scrolling or not self.scrolling and le<self.tlen:
-        chra = self.text[le]
-        self.render = self.font.render(chra, True, self.color)
-        if chra is '.' or chra is ':':
-            DS.blit(self.render, ((self.x+i*self.size*.5),self.y))
-            i+=.5
-        elif chra is '1':
-            DS.blit(self.render, ((self.x+i*self.size*.5)+self.size*.27,self.y))
-            i+=1
-        else:
-            DS.blit(self.render, (self.x+i*self.size*.5,self.y))
-            i+=1
-        le+=1
-        if le >= self.tlen and self.scrolling:
-            le = 0
+            chra = self.text[le]
+            self.render = self.font.render(chra, True, self.color)
+            if chra is '.' or chra is ':':
+                DS.blit(self.render, ((self.x+i*self.size*.5),self.y))
+                i+=.5
+            elif chra is '1':
+                DS.blit(self.render, ((self.x+i*self.size*.5)+self.size*.27,self.y))
+                i+=1
+            else:
+                DS.blit(self.render, (self.x+i*self.size*.5,self.y))
+                i+=1
+            
+            le+=1
+            
+            if le >= self.tlen and self.scrolling:
+                le = 0
         """
         for i in range(len(self.text)):
         self.render = self.font.render(self.text[i], True, self.color)

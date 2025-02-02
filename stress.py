@@ -4,8 +4,8 @@ from keyhandler import KeyHandler
 import scene
 
 def quit():
-  pygame.quit()
-  sys.exit()
+    pygame.quit()
+    sys.exit()
 
 #Screen size constants
 SCREENWIDTH = 1280
@@ -18,9 +18,9 @@ pygame.init()
 FPS = 60.0
 fpsClock  = pygame.time.Clock()
 if FULLSCREEN:
-  DS = pygame.display.set_mode((SCREENWIDTH, SCREENHEIGHT), pygame.FULLSCREEN)
+    DS = pygame.display.set_mode((SCREENWIDTH, SCREENHEIGHT), pygame.FULLSCREEN)
 else:
-  DS = pygame.display.set_mode((SCREENWIDTH, SCREENHEIGHT))
+    DS = pygame.display.set_mode((SCREENWIDTH, SCREENHEIGHT))
 
 pygame.display.set_caption('Stressfull Job Sim')
 
@@ -49,21 +49,21 @@ def main():
             kh.handle_input(event)
 
     for obj in current_scene:
-      if obj.clickable and obj.checkclick(mousex, mousey, camera_offset_x):
-        action = obj.action
+        if obj.clickable and obj.checkclick(mousex, mousey, camera_offset_x):
+            action = obj.action
 
 
-        # fill the screen with a color to wipe away anything from last frame
-        screen.fill("purple")
+            # fill the screen with a color to wipe away anything from last frame
+            screen.fill("purple")
 
-        # RENDER YOUR GAME HERE
-        
+            # RENDER YOUR GAME HERE
+            
 
-        # foreach object in the game
-        #
+            # foreach object in the game
+            #
 
-        # flip() the display to put your work on screen
-        pygame.display.flip()
+            # flip() the display to put your work on screen
+            pygame.display.flip()
 
     clock.tick(60)  # limits FPS to 60
     
