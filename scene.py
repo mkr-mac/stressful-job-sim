@@ -3,6 +3,7 @@ from pygame.locals import *
 from image import StressImage as Image
 from button import StressButton as Button
 from gauge import StressGauge as Gauge
+from alarmlight import StressAlarmLight as AlarmLight
 from text import Text
 
 class Scene():

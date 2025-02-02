@@ -4,6 +4,7 @@ from keyhandler import KeyHandler
 import scene
 from scene import Scene
 import button
+import alarmlight
 from eventdirector import EventDirector
 
 def quit():
@@ -64,6 +65,10 @@ def main():
 
         mouse_state = kh.get_mouse_state()
         for obj in current_scene.objects:
+            
+            if type(obj) is alarmlight.StressAlarmLight:
+                obj.update_alarm_light()
+
 
             if obj.clickable and obj.checkclick(mouse_state["pos"][0], mouse_state["pos"][1], camera_offset_x) and mouse_state["framelmb"] == True:
                 obj.action()
@@ -85,7 +90,7 @@ def main():
             camera_offset_x += 1
         if key_states["left"]:
             camera_offset_x -= 1
-            
+
         # RENDER YOUR GAME HERE
         
 
