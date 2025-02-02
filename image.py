@@ -44,3 +44,6 @@ class StressImage:
 
     def get_alarm_state(self):
         return False
+    
+    def alarm(self):
+        pass

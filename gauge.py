@@ -23,5 +23,15 @@ class StressGauge():
     def checkclick(self):
         return False
     
+    def update(self):
+        self.needle_pos += .01
+        if self.needle_pos > 100:
+            self.needle_pos = 100
+
     def get_alarm_state(self):
-        pass
+        return self.needle_pos > 50
+    
+    def alarm(self):
+        self.needle_pos += 10
+        if self.needle_pos > 100:
+            self.needle_pos = 100

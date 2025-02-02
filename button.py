@@ -9,8 +9,7 @@ class StressButton(StressImage):
         return self.alarm_state
     
     def alarm(self):
-        self.alarm = True
+        self.alarm_state = True
 
     def clear_alarm(self):
-        self.alarm = False
-        
+        self.alarm_state = False
