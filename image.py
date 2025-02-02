@@ -15,17 +15,17 @@ class StressImage:
         self.action = action
     
     def draw(self, DS, camera_offset_x=0):
-        DS.blit(self.image, ((self.x-camera_offset_x),self.y))
+        DS.blit(self.image, (self.x-camera_offset_x,self.y))
 
     def update(self):
         pass
     
     def checkclick(self, mousex, mousey, camera_offset_x=0):
         return (self.y+self.height > mousey > self.y and 
-        self.x+self.width-camera_offset_x > mousex > self.x)
+        self.x+self.width-camera_offset_x > mousex > self.x-camera_offset_x)
         
     def change_pic(self, image):
-        self.image = pygame.image.load(image)
+        self.image = pygame.image.load(os.path.join("img", image))
         self.rect = self.image.get_rect()
         self.width = self.image.get_width()
         self.height = self.image.get_height()

@@ -2,6 +2,7 @@
 import pygame, sys
 from keyhandler import KeyHandler
 import scene
+import button
 
 def quit():
     pygame.quit()
@@ -61,9 +62,22 @@ def main():
         for obj in current_scene:
             if obj.clickable and obj.checkclick(mouse_state["pos"][0], mouse_state["pos"][1], camera_offset_x) and mouse_state["framelmb"] == True:
                 obj.action()
+                if type(obj) is button.StressButton:
+                    obj.change_pic("buttondown.png")
                 mouse_state["framelmb"] = False
+            elif obj.clickable and not obj.checkclick(mouse_state["pos"][0], mouse_state["pos"][1], camera_offset_x) or mouse_state["lmb"] == False:
+                if type(obj) is button.StressButton:
+                    obj.change_pic("buttonup.png")
+
             obj.draw(DS, camera_offset_x)
 
+        key_states = kh.get_key_states()
+        # Hande camera movement
+        if key_states["right"]:
+            camera_offset_x += 1
+        if key_states["left"]:
+            camera_offset_x -= 1
+            
         # RENDER YOUR GAME HERE
         
 

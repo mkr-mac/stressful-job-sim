@@ -26,5 +26,9 @@ def test():
 def desk():
     return [
         Image('desk.png', 0, 0),
+        Button('buttonup.png', 200, 500, True, test),
+        Button('buttonup.png', 300, 500, True, test),
+        Button('buttonup.png', 400, 500, True, test),
         Button('buttonup.png', 500, 500, True, test),
+        Button('buttonup.png', 600, 500, True, test),
     ]
