@@ -41,3 +41,6 @@ class StressImage:
         self.rect = self.image.get_rect(center=self.rect.center)
         self.x = self.rect.topleft[0] + self.x
         self.y = self.rect.topleft[1] + self.y
+
+    def get_alarm_state(self):
+        return False

@@ -22,3 +22,6 @@ class StressGauge():
     
     def checkclick(self):
         return False
+    
+    def get_alarm_state(self):
+        pass

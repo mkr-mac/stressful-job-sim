@@ -2,7 +2,9 @@
 import pygame, sys
 from keyhandler import KeyHandler
 import scene
+from scene import Scene
 import button
+from eventdirector import EventDirector
 
 def quit():
     pygame.quit()
@@ -41,7 +43,9 @@ def main():
     
     kh = KeyHandler()
 
-    current_scene = scene.desk()
+    current_scene = Scene(scene.desk())
+
+    ED = EventDirector()
 
     while running:
         # poll for events
@@ -59,17 +63,21 @@ def main():
         screen.fill("purple")
 
         mouse_state = kh.get_mouse_state()
-        for obj in current_scene:
+        for obj in current_scene.objects:
+
             if obj.clickable and obj.checkclick(mouse_state["pos"][0], mouse_state["pos"][1], camera_offset_x) and mouse_state["framelmb"] == True:
                 obj.action()
                 if type(obj) is button.StressButton:
                     obj.change_pic("buttondown.png")
+                    obj.clear_alarm()
                 mouse_state["framelmb"] = False
             elif obj.clickable and not obj.checkclick(mouse_state["pos"][0], mouse_state["pos"][1], camera_offset_x) or mouse_state["lmb"] == False:
                 if type(obj) is button.StressButton:
                     obj.change_pic("buttonup.png")
 
             obj.draw(DS, camera_offset_x)
+
+        ED.update(current_scene.objects)
 
         key_states = kh.get_key_states()
         # Hande camera movement
