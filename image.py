@@ -15,7 +15,7 @@ class StressImage:
         self.action = action
     
     def draw(self, DS, camera_offset_x=0):
-        DS.blit(self.image, (self.x-camera_offset_x,self.y))
+        DS.blit(self.image, ((self.x-camera_offset_x),self.y))
 
     def update(self):
         pass

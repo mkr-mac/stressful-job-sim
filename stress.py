@@ -26,16 +26,21 @@ pygame.display.set_caption('Stressfull Job Sim')
 
 def main():
     # pygame setup
+
+    #Start Pygame
+    pygame.mixer.pre_init(44100, 16, 2, 4096)
     pygame.init()
     screen = pygame.display.set_mode((1280, 720))
     clock = pygame.time.Clock()
     running = True
+    FPS = 60.0
+    fpsClock  = pygame.time.Clock()
 
     camera_offset_x = 0
     
     kh = KeyHandler()
 
-    current_scene = scene.desk
+    current_scene = scene.desk()
 
     while running:
         # poll for events
@@ -48,15 +53,15 @@ def main():
 
             kh.handle_input(event)
 
+
+        # fill the screen with a color to wipe away anything from last frame
+        screen.fill("purple")
+
         for obj in current_scene:
             if obj.clickable and obj.checkclick(mousex, mousey, camera_offset_x):
                 action = obj.action
 
             obj.draw(DS, camera_offset_x)
-
-
-        # fill the screen with a color to wipe away anything from last frame
-        screen.fill("purple")
 
         # RENDER YOUR GAME HERE
         
@@ -65,12 +70,11 @@ def main():
         #
 
         # flip() the display to put your work on screen
-        pygame.display.flip()
 
-        clock.tick(60)  # limits FPS to 60
+        pygame.display.update()
+        fpsClock.tick(FPS)
     
-
-pygame.quit()
+    pygame.quit()
 
 
 if (__name__ == "__main__"):
