@@ -6,7 +6,7 @@ class StressGauge():
         self.needle = StressImage("gaugeneedle.png", x, y)
         self.front_face = StressImage("gaugefacefront.png", x, y)
 
-        self.needle_pos = 25
+        self.needle_pos = 0.0
         self.needle.rotate(-self.needle_pos * 1.8)
 
         self.clickable = False
@@ -24,14 +24,10 @@ class StressGauge():
         return False
     
     def update(self):
-        self.needle_pos += .01
-        if self.needle_pos > 100:
-            self.needle_pos = 100
+        self.set_needle_pos(self.needle_pos + .01)
 
     def get_alarm_state(self):
         return self.needle_pos > 50
     
     def alarm(self):
-        self.needle_pos += 10
-        if self.needle_pos > 100:
-            self.needle_pos = 100
+        self.set_needle_pos(self.needle_pos + 10)

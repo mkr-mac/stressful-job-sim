@@ -65,6 +65,8 @@ def main():
 
         mouse_state = kh.get_mouse_state()
         for obj in current_scene.objects:
+
+            obj.update()
             
             if type(obj) is alarmlight.StressAlarmLight:
                 obj.update_alarm_light()

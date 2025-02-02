@@ -1,4 +1,5 @@
 import random
+from text import Text
 
 class EventDirector():
     def __init__(self):
@@ -15,6 +16,9 @@ class EventDirector():
                 active_stressors += 1
             if (self.difficulty > random.random()*self.pace):
                 obj.alarm()
+
+            if type(obj) is Text:
+                obj.set_text(f"Stress: {round(self.stress,5)}     Difficulty: {round(self.difficulty,5)}     Stressors: {active_stressors}")
         
         self.stress += active_stressors*self.difficulty
 
