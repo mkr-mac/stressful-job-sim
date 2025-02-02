@@ -2,7 +2,7 @@ import random
 
 class EventDirector():
     def __init__(self):
-        self.pace = 20000
+        self.pace = 2000
         self.stress = 0.0
         self.job_security = 0
         self.energy = 1000

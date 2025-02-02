@@ -33,4 +33,5 @@ def desk():
         Button('buttonup.png', 500, 500, True, test),
         Button('buttonup.png', 600, 500, True, test),
         Gauge(400, 400),
+        Text('10000', 662, 411, os.path.join("fonts",'ARIALBD.TTF'), 60, (255,184,0)),
     ]

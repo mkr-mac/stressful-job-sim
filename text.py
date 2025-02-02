@@ -33,7 +33,7 @@ class Text:
         self.action = action
         self.calls = 0
 
-    def draw(self, DS):
+    def draw(self, DS, camera_offset_x=0):
         self.calls+=1
         if not self.calls%30 and self.scrolling:
             self.c+=1
@@ -45,13 +45,13 @@ class Text:
             chra = self.text[le]
             self.render = self.font.render(chra, True, self.color)
             if chra is '.' or chra is ':':
-                DS.blit(self.render, ((self.x+i*self.size*.5),self.y))
+                DS.blit(self.render, ((self.x-camera_offset_x+i*self.size*.5),self.y))
                 i+=.5
             elif chra is '1':
-                DS.blit(self.render, ((self.x+i*self.size*.5)+self.size*.27,self.y))
+                DS.blit(self.render, ((self.x-camera_offset_x+i*self.size*.5)+self.size*.27,self.y))
                 i+=1
             else:
-                DS.blit(self.render, (self.x+i*self.size*.5,self.y))
+                DS.blit(self.render, (self.x-camera_offset_x+i*self.size*.5,self.y))
                 i+=1
             
             le+=1
@@ -82,4 +82,10 @@ class Text:
         self.c = 0
 
     def update(self):
+        pass
+
+    def get_alarm_state(self):
+        return False
+    
+    def alarm(self):
         pass
