@@ -48,24 +48,26 @@ def main():
 
             kh.handle_input(event)
 
-    for obj in current_scene:
-        if obj.clickable and obj.checkclick(mousex, mousey, camera_offset_x):
-            action = obj.action
+        for obj in current_scene:
+            if obj.clickable and obj.checkclick(mousex, mousey, camera_offset_x):
+                action = obj.action
+
+            obj.draw(DS, camera_offset_x)
 
 
-            # fill the screen with a color to wipe away anything from last frame
-            screen.fill("purple")
+        # fill the screen with a color to wipe away anything from last frame
+        screen.fill("purple")
 
-            # RENDER YOUR GAME HERE
-            
+        # RENDER YOUR GAME HERE
+        
 
-            # foreach object in the game
-            #
+        # foreach object in the game
+        #
 
-            # flip() the display to put your work on screen
-            pygame.display.flip()
+        # flip() the display to put your work on screen
+        pygame.display.flip()
 
-    clock.tick(60)  # limits FPS to 60
+        clock.tick(60)  # limits FPS to 60
     
 
 pygame.quit()
