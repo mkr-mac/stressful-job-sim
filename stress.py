@@ -48,8 +48,10 @@ def main():
 
             kh.handle_input(event)
 
+
+        mouse_state = kh.get_mouse_state()
         for obj in current_scene:
-            if obj.clickable and obj.checkclick(mousex, mousey, camera_offset_x):
+            if obj.clickable and obj.checkclick(mouse_state["pos"][0], mouse_state["pos"][1], camera_offset_x):
                 action = obj.action
 
             obj.draw(DS, camera_offset_x)
