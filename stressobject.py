@@ -9,7 +9,10 @@ class StressObject():
         pass
 
     def alarm(self):
-        pass
+        return False
 
+    def get_alarm_state(self):
+        return False
+    
     def clear_alarm(self):
         pass

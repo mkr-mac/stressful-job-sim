@@ -1,6 +1,7 @@
 from image import StressImage
+from stressobject import StressObject
 
-class StressGauge():
+class StressGauge(StressObject):
     def __init__(self, x, y):
         self.face = StressImage("gaugeface.png", x, y)
         self.needle = StressImage("gaugeneedle.png", x, y)

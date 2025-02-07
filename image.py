@@ -1,7 +1,8 @@
 import pygame, os
 from pygame.locals import *
+from stressobject import StressObject
 
-class StressImage:
+class StressImage(StressObject):
     def __init__(self, image, x, y, clickable = False, action = None):
         self.x = x
         self.y = y
@@ -44,9 +45,3 @@ class StressImage:
         self.rect = self.image.get_rect(center=self.rect.center)
         self.x = self.rect.topleft[0] + self.ox
         self.y = self.rect.topleft[1] + self.oy
-
-    def get_alarm_state(self):
-        return False
-    
-    def alarm(self):
-        pass
